@@ -56,4 +56,4 @@ return (
 )
 
 }
-export default Catstate
+export default CatState
