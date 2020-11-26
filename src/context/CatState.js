@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer , useContext} from 'react';
 import CatContext from './CatContext'
 import CatReducer from './CatReducer'
 
@@ -9,6 +9,7 @@ import { GET_ALL_CATS ,
 
 const CatState = props => {
 
+    const catContext = useContext(CatContext)
 
 const initialState = {
     cards : [
@@ -38,17 +39,39 @@ const [state, dispatch] = useReducer(CatReducer, initialState)
 
 
 // Add Cat
-
+const addCat = data => {
+    /*let id = getNewId()
+    data.id = id*/
+    console.log('from actions : '+data.title)
+    dispatch({
+        type: ADD_CAT,
+        payload: data
+    })
+}
 
 // Update Cat
 
 
 // Delete Cat
 
+//Error
+
+
+//Functions
+/*
+const getNewId = () => {
+    const id = catContext.cards[catContext.cards.length].id
+    const newId = id+1
+    return newId
+}*/
+
+
+
 return (
     <CatContext.Provider 
     value={{
-        cards: state.cards
+        cards: state.cards,
+        addCat
     }}>
 
         {props.children}
