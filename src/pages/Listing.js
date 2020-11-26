@@ -1,4 +1,4 @@
-import React,{useContext,useEffect} from 'react'
+import React,{useContext} from 'react'
 import CatContext from '../context/CatContext'
 import Card from '../components/Card'
 import {Link} from 'react-router-dom'
@@ -12,11 +12,11 @@ const Listing = () => {
     return (
         <>
         <Header />
-        <section class="container">
+        <section className="container">
         <h2>Cat card list</h2>
         <hr />
-    {cards !== null ? cards.map(c => <Card card={c} />) : <p>No cards</p>}
-   <Link to="/add"><button class="btn btn-lg btn-danger circle add"><i class="fas fa-plus"></i></button></Link>   
+    {cards !== null ? cards.map(c => <Card key={c.id} card={c} />) : <p>No cards</p>}
+   <Link to="/add"><button className="btn btn-lg btn-danger circle add"><i className="fas fa-plus"></i></button></Link>   
       </section>
       </>
     )

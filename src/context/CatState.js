@@ -2,8 +2,7 @@ import React, { useReducer , useContext} from 'react';
 import CatContext from './CatContext'
 import CatReducer from './CatReducer'
 
-import { GET_ALL_CATS , 
-         GET_CAT , ADD_CAT ,
+import { ADD_CAT ,
          DELETE_CAT ,
          UPDATE_CAT } from './types'
 
@@ -30,18 +29,13 @@ const initialState = {
 
 const [state, dispatch] = useReducer(CatReducer, initialState)
 
-// Actions:
-
-// Get All Cats
-
-
-// Get Cat by Id
-
+// ---> Actions:
 
 // Add Cat
 const addCat = data => {
-    /*let id = getNewId()
-    data.id = id*/
+    let id = generateNextId()
+    data.id = id
+    console.log(state.cards[state.cards.length-1].id)
     console.log('from actions : '+data.title)
     dispatch({
         type: ADD_CAT,
@@ -54,16 +48,20 @@ const addCat = data => {
 
 // Delete Cat
 
+
+
 //Error
 
 
-//Functions
-/*
-const getNewId = () => {
-    const id = catContext.cards[catContext.cards.length].id
-    const newId = id+1
-    return newId
-}*/
+//--------------------------------------------------
+// ---> State Functions:
+
+// generateNewId
+
+const generateNextId = () => {
+    const id = state.cards[state.cards.length-1].id
+    return id + 1
+}
 
 
 

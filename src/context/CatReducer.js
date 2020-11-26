@@ -1,5 +1,4 @@
-import { GET_ALL_CATS , 
-    GET_CAT , ADD_CAT ,
+import {ADD_CAT ,
     DELETE_CAT ,
     UPDATE_CAT } from './types'
 
@@ -9,7 +8,7 @@ import { GET_ALL_CATS ,
             case ADD_CAT:
                 return {
                     ...state,
-                    cards: [...state.cards,action.payload]
+                    cards: [action.payload,...state.cards]
                 }
         }
     }
